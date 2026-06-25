@@ -59,8 +59,11 @@ function kandawasai_register_sweets_cpt() {
 		'rewrite'       => array( 'slug' => 'sweets' ),
 		'menu_position' => 5,
 		'menu_icon'     => 'dashicons-carrot',
-		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields' ),
 		'show_in_rest'  => true,
+		'show_ui'       => true,
+		'show_in_menu'  => true,
+		'map_meta_cap'  => true,
 	);
 
 	register_post_type( 'sweets', $args );
@@ -120,6 +123,26 @@ function kandawasai_register_sweets_acf_fields() {
 					'name'  => 'sweet_season',
 					'type'  => 'text',
 				),
+				array(
+					'key'           => 'field_kandawasai_sweet_display_section',
+					'label'         => '表示セクション',
+					'name'          => 'sweet_display_section',
+					'type'          => 'select',
+					'choices'       => array(
+						'seasonal_namagashi' => '季節の上生菓子',
+						'standard_wagashi'   => '定番和菓子',
+						'seasonal_wagashi'   => '季節の和菓子',
+					),
+					'default_value' => 'standard_wagashi',
+					'ui'            => 1,
+				),
+				array(
+					'key'   => 'field_kandawasai_sweet_description',
+					'label' => '一覧用説明文',
+					'name'  => 'sweet_description',
+					'type'  => 'textarea',
+					'rows'  => 4,
+				),
 			),
 			'location' => array(
 				array(
@@ -170,19 +193,112 @@ function kandawasai_nav_class( $view ) {
 	return kandawasai_current_view() === $view ? ' is-current' : '';
 }
 
-function kandawasai_get_image_url( $post_id ) {
-	if ( has_post_thumbnail( $post_id ) ) {
-		return get_the_post_thumbnail_url( $post_id, 'large' );
+function kandawasai_normalize_image_url( $image ) {
+	if ( empty( $image ) ) {
+		return '';
 	}
 
+	if ( is_string( $image ) ) {
+		return $image;
+	}
+
+	if ( is_array( $image ) && ! empty( $image['url'] ) ) {
+		return $image['url'];
+	}
+
+	if ( is_numeric( $image ) ) {
+		$image_url = wp_get_attachment_image_url( (int) $image, 'large' );
+		return $image_url ? $image_url : '';
+	}
+
+	return '';
+}
+
+function kandawasai_get_image_url( $post_id ) {
 	if ( function_exists( 'get_field' ) ) {
-		$acf_image = get_field( 'sweet_image', $post_id );
+		$acf_image = kandawasai_normalize_image_url( get_field( 'sweet_image', $post_id ) );
 		if ( ! empty( $acf_image ) ) {
 			return $acf_image;
 		}
 	}
 
+	if ( has_post_thumbnail( $post_id ) ) {
+		$thumbnail_url = get_the_post_thumbnail_url( $post_id, 'large' );
+		if ( ! empty( $thumbnail_url ) ) {
+			return $thumbnail_url;
+		}
+	}
+
 	return 'https://kandawasai.com/wp-content/uploads/2023/09/top_item_01.jpg';
+}
+
+function kandawasai_get_sweet_description( $post_id ) {
+	$description = '';
+
+	if ( function_exists( 'get_field' ) ) {
+		$description = trim( (string) get_field( 'sweet_description', $post_id ) );
+	}
+
+	if ( '' !== $description ) {
+		return $description;
+	}
+
+	$post = get_post( $post_id );
+
+	if ( $post instanceof WP_Post ) {
+		if ( ! empty( $post->post_excerpt ) ) {
+			return trim( wp_strip_all_tags( $post->post_excerpt ) );
+		}
+
+		if ( ! empty( $post->post_content ) ) {
+			return trim( wp_strip_all_tags( $post->post_content ) );
+		}
+	}
+
+	return '';
+}
+
+function kandawasai_get_sweets_query( $section, $paged = 1, $posts_per_page = -1 ) {
+	$args = array(
+		'post_type'      => 'sweets',
+		'post_status'    => 'publish',
+		'posts_per_page' => $posts_per_page,
+		'orderby'        => array(
+			'date' => 'DESC',
+		),
+	);
+
+	if ( $posts_per_page > 0 ) {
+		$args['paged'] = max( 1, (int) $paged );
+	}
+
+	if ( 'seasonal_namagashi' === $section ) {
+		$args['meta_query'] = array(
+			array(
+				'key'     => 'sweet_display_section',
+				'value'   => 'seasonal_namagashi',
+				'compare' => '=',
+			),
+		);
+	} elseif ( 'standard_wagashi' === $section ) {
+		$args['meta_query'] = array(
+			array(
+				'key'     => 'sweet_display_section',
+				'value'   => 'standard_wagashi',
+				'compare' => '=',
+			),
+		);
+	} elseif ( 'seasonal_wagashi' === $section ) {
+		$args['meta_query'] = array(
+			array(
+				'key'     => 'sweet_display_section',
+				'value'   => 'seasonal_wagashi',
+				'compare' => '=',
+			),
+		);
+	}
+
+	return new WP_Query( $args );
 }
 
 function kandawasai_render_site_header() {

@@ -24,54 +24,111 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php kandawasai_render_page_title( '和菓子紹介' ); ?>
 		<div class="post-inner thin">
 			<div class="entry-content">
-				<div class="team-2-box_inner_flex">
-					<div class="team-2-box_inner_02">
-						<?php if ( have_posts() ) : ?>
-							<?php while ( have_posts() ) : ?>
-								<?php
-								the_post();
-
-								$sweet_price  = function_exists( 'get_field' ) ? get_field( 'sweet_price' ) : '';
-								$sweet_season = function_exists( 'get_field' ) ? get_field( 'sweet_season' ) : '';
-								$image_url    = kandawasai_get_image_url( get_the_ID() );
-								?>
-								<div class="team-2-box">
-									<a class="team_flex" href="<?php echo esc_url( get_permalink() ? get_permalink() : '#' ); ?>">
-										<div class="team-2-pic">
-											<img
-												src="<?php echo esc_url( $image_url ); ?>"
-												class="attachment-index_thumbnail size-index_thumbnail wp-post-image"
-												alt="<?php echo esc_attr( get_the_title() ); ?>"
-											/>
-										</div>
-										<div class="team_flex_ttl">
-											<div class="team-2-pic_dateTime">
-												<p>
-													<?php echo esc_html( get_the_date( 'Y年n月j日' ) ); ?>
-													<?php if ( ! empty( $sweet_price ) ) : ?>
-														<span><?php echo esc_html( $sweet_price ); ?></span>
-													<?php endif; ?>
-												</p>
-											</div>
-											<div class="team-2-content">
-												<h5>
-													<?php if ( ! empty( $sweet_season ) ) : ?>
-														<?php echo esc_html( $sweet_season ); ?>
-														<?php echo esc_html( ' ' ); ?>
-													<?php endif; ?>
-													<?php the_title(); ?>
-												</h5>
-											</div>
-										</div>
-									</a>
-								</div>
-							<?php endwhile; ?>
-							<div class="pnavi"><?php the_posts_pagination(); ?></div>
-						<?php else : ?>
-							<p class="sweets-archive__empty">和菓子データはまだ登録されていません。</p>
-						<?php endif; ?>
+				<section id="sweets" class="fixed_w_1000">
+					<div class="sweets_introduction">
+						<div class="sweets_introduction_img">
+							<img src="https://kandawasai.com/wp-content/uploads/2023/09/IMG_0564.jpg" alt="和菓子紹介" />
+						</div>
+						<div class="sweets_introduction_txt">
+							<h3>見た目で感じる四季折々の美しい和菓子</h3>
+							<p>季節によって旬の素材を使うことはもちろん、目で季節を感じて楽しんでいただく和菓子。そろそろ桜の花が咲くころかな…という頃になると、桜をモチーフにした春らしいデザインの生菓子が並びます。夏になれば暑さをしのいでくれるような涼しげな和菓子、秋には紅葉の美しい色合いなどの和菓子、冬には雪の静けさや木漏れ日の暖かさを表現した和菓子が登場します。是非、四季折々にしか出会えない、様々な和菓子を見て感じ、味わっていただけますと幸いです。</p>
+						</div>
 					</div>
-				</div>
+				</section>
+
+				<section id="sweets_item" class="fixed_w_1000">
+					<div class="fixed_ttl"><h2>季節の上生菓子</h2></div>
+					<?php $seasonal_query = kandawasai_get_sweets_query( 'seasonal_namagashi' ); ?>
+					<?php if ( $seasonal_query->have_posts() ) : ?>
+						<ul class="sweets_item_flex">
+							<?php while ( $seasonal_query->have_posts() ) : ?>
+								<?php
+								$seasonal_query->the_post();
+								$image_url   = kandawasai_get_image_url( get_the_ID() );
+								$description = kandawasai_get_sweet_description( get_the_ID() );
+								?>
+								<li>
+									<div class="sweets_item_ttl"><h3><?php the_title(); ?></h3></div>
+									<div class="sweets_item_img">
+										<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
+									</div>
+									<p class="sweets_item_txt"><?php echo nl2br( esc_html( $description ) ); ?></p>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+						<?php wp_reset_postdata(); ?>
+					<?php else : ?>
+						<p class="sweets-archive__empty">「表示セクション」を「季節の上生菓子」にした和菓子を追加するとここに表示されます。</p>
+					<?php endif; ?>
+				</section>
+
+				<?php $standard_query = kandawasai_get_sweets_query( 'standard_wagashi' ); ?>
+				<?php if ( $standard_query->have_posts() ) : ?>
+					<section id="sweets_item_classic" class="fixed_w_1000">
+						<div class="fixed_ttl"><h2>定番和菓子</h2></div>
+						<ul class="sweets_item_classic_item">
+							<?php while ( $standard_query->have_posts() ) : ?>
+								<?php
+								$standard_query->the_post();
+								$image_url    = kandawasai_get_image_url( get_the_ID() );
+								$description  = kandawasai_get_sweet_description( get_the_ID() );
+								$sweet_price  = function_exists( 'get_field' ) ? get_field( 'sweet_price' ) : '';
+								?>
+								<li>
+									<div class="sweets_item_classic_item_txtbox">
+										<div class="sweets_item_classic_item_ttl"><h3><?php the_title(); ?></h3></div>
+										<div class="sweets_item_classic_item_txt">
+											<?php if ( '' !== $description ) : ?>
+												<p><?php echo nl2br( esc_html( $description ) ); ?></p>
+											<?php endif; ?>
+											<?php if ( ! empty( $sweet_price ) ) : ?>
+												<p><?php echo esc_html( $sweet_price ); ?></p>
+											<?php endif; ?>
+										</div>
+									</div>
+									<div class="sweets_item_classic_item_img">
+										<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
+									</div>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+						<?php wp_reset_postdata(); ?>
+					</section>
+				<?php endif; ?>
+
+				<?php $seasonal_wagashi_query = kandawasai_get_sweets_query( 'seasonal_wagashi' ); ?>
+				<?php if ( $seasonal_wagashi_query->have_posts() ) : ?>
+					<section id="sweets_item_seasonal" class="fixed_w_1000">
+						<div class="fixed_ttl"><h2>季節の和菓子</h2></div>
+						<ul class="sweets_item_classic_item">
+							<?php while ( $seasonal_wagashi_query->have_posts() ) : ?>
+								<?php
+								$seasonal_wagashi_query->the_post();
+								$image_url    = kandawasai_get_image_url( get_the_ID() );
+								$description  = kandawasai_get_sweet_description( get_the_ID() );
+								$sweet_price  = function_exists( 'get_field' ) ? get_field( 'sweet_price' ) : '';
+								?>
+								<li>
+									<div class="sweets_item_classic_item_txtbox">
+										<div class="sweets_item_classic_item_ttl"><h3><?php the_title(); ?></h3></div>
+										<div class="sweets_item_classic_item_txt">
+											<?php if ( '' !== $description ) : ?>
+												<p><?php echo nl2br( esc_html( $description ) ); ?></p>
+											<?php endif; ?>
+											<?php if ( ! empty( $sweet_price ) ) : ?>
+												<p><?php echo esc_html( $sweet_price ); ?></p>
+											<?php endif; ?>
+										</div>
+									</div>
+									<div class="sweets_item_classic_item_img">
+										<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
+									</div>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+						<?php wp_reset_postdata(); ?>
+					</section>
+				<?php endif; ?>
 				<?php kandawasai_render_contact_box(); ?>
 			</div>
 		</div>
