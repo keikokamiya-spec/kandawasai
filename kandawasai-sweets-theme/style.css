@@ -1,0 +1,93 @@
+/*
+Theme Name: Kandawasai Sweets Theme
+Theme URI: https://example.com/
+Author: OpenAI Codex
+Author URI: https://openai.com/
+Description: Custom post type "sweets" and ACF-ready archive template for Kandawasai.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+Text Domain: kandawasai-sweets-theme
+*/
+
+.team-2-box {
+	border-bottom: solid 1px #cd2653;
+	padding: 12px 0 16px;
+}
+
+.team_flex {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.team-2-pic {
+	width: 182px;
+	height: 122px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.team-2-pic img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.team_flex_ttl {
+	width: calc(100% - 206px);
+}
+
+.team-2-pic_dateTime p {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+.team-2-pic_dateTime span {
+	display: inline-block;
+	margin-left: 8px;
+	font-size: 14px;
+	color: #666;
+}
+
+.team-2-content h5 {
+	margin: 10px 0 0;
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+.sweets-archive {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 40px 20px 80px;
+}
+
+.sweets-archive__title {
+	margin: 0 0 32px;
+	font-size: 32px;
+}
+
+.sweets-archive__empty {
+	font-size: 16px;
+}
+
+@media screen and (max-width: 640px) {
+	.team_flex {
+		display: block;
+	}
+
+	.team-2-pic,
+	.team_flex_ttl {
+		width: 100%;
+	}
+
+	.team-2-pic {
+		height: 220px;
+		margin-bottom: 16px;
+	}
+}

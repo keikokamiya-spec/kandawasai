@@ -1,0 +1,1834 @@
+:root {
+  --bg: #fcf6f1;
+  --text: #2d2a26;
+  --muted: #858585;
+  --accent: #e96e65;
+  --footer: #f6c8bd;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "hiragino-mincho-pron", "Hiragino Mincho ProN", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.grecaptcha-badge,
+iframe[src*="recaptcha"],
+iframe[title*="reCAPTCHA"],
+div[id*="recaptcha"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+#front_header {
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/header-scaled.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.front_header_flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.front_header_logo {
+  width: 60%;
+}
+
+.front_header_logo a img {
+  width: 100%;
+  max-width: 156px;
+  margin: 0 0 0 auto;
+}
+
+.front_header_icon_box {
+  width: 40%;
+}
+
+.front_header_icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.front_header_icon li {
+  margin-left: 18px;
+}
+
+.front_header_icon li a {
+  text-align: center;
+}
+
+.front_header_icon li a img {
+  width: 33px;
+  margin: 0 auto;
+}
+
+.front_header_icon li a p {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.front_header_nav {
+  margin: 0 auto;
+  padding: 20px 20px 0;
+  max-width: 1180px;
+}
+
+.front_header_nav_item {
+  display: flex;
+  justify-content: space-around;
+}
+
+.front_header_nav_item li {
+  position: relative;
+  width: 80%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.front_header_nav_item li:not(:last-child)::after {
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 50%;
+  content: "";
+  transform: rotate(15deg);
+  background-color: #333;
+}
+
+.front_header_nav_item li a {
+  position: relative;
+  font-weight: 600;
+}
+
+.header_nane_item::after {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0%;
+  height: 7px;
+  content: "";
+  transform: translateX(-50%);
+  border-radius: 15px;
+  background-color: rgb(233 110 101 / 58%);
+}
+
+.header_nane_item:hover::after,
+.header_nane_item.is-current::after,
+.header_nane_home::after {
+  width: 110%;
+  transition: all 0.6s;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 90;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+}
+
+.menu-btn span,
+.menu-btn span::after {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  display: block;
+  width: 25px;
+  height: 3px;
+  content: "";
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.menu-btn span::after {
+  top: 8px;
+}
+
+#menu-btn-check {
+  display: none;
+}
+
+.menu-content {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  z-index: 80;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  transition: all 0.5s;
+  background-color: var(--footer);
+}
+
+#menu-btn-check:checked ~ .menu-content {
+  left: 0;
+}
+
+.menu-content ul {
+  padding: 70px 10px 0;
+}
+
+.menu-content ul li {
+  list-style: none;
+  border-bottom: solid 1px #fff;
+}
+
+.menu-content ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 9px 15px 10px 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 15px;
+}
+
+.menu-content ul li a::before {
+  position: absolute;
+  top: 16px;
+  right: 11px;
+  width: 7px;
+  height: 7px;
+  content: "";
+  transform: rotate(45deg);
+  border-top: solid 2px #fff;
+  border-right: solid 2px #fff;
+}
+
+.sp_icon_nav_item {
+  display: flex;
+  padding: 20px !important;
+}
+
+.sp_icon_nav_item li {
+  width: 40px;
+  margin-right: 10px;
+  border-bottom: none !important;
+}
+
+.sp_icon_nav_item li a {
+  padding: 0 !important;
+}
+
+.sp_icon_nav_item li a::before {
+  display: none;
+}
+
+.sp_icon_nav_item li a img {
+  width: 25px;
+  margin: 0 auto;
+}
+
+.sp_icon_nav_item li a p {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.w_1140 {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.w_960 {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.slideBox {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.item1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  object-fit: cover;
+  animation: anime 34.5s 0s infinite;
+}
+
+.item1:nth-of-type(2) {
+  animation-delay: 10s;
+}
+
+.item1:nth-of-type(3) {
+  animation-delay: 20s;
+}
+
+.item1:nth-of-type(4) {
+  animation-delay: 30s;
+}
+
+@keyframes anime {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  50% {
+    z-index: 9;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.hello_bg {
+  width: 100%;
+  padding: 42px 0 64px;
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/top_bg_01-scaled.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.hello_flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hello_img_box img {
+  max-width: 600px;
+}
+
+.hello_txtbox_flex {
+  display: flex;
+}
+
+.hello_txtbox_flex_txtarea {
+  margin: 50px 50px 0 -30px;
+}
+
+.hello_txtbox_flex_txtarea p {
+  writing-mode: vertical-rl;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.hello_txtbox_flex_ttlarea_ttl {
+  margin-bottom: 300px;
+}
+
+.hello_txtbox_flex_ttlarea_ttl img {
+  max-width: 168px;
+}
+
+.more_btn a {
+  position: relative;
+  display: block;
+  width: fit-content;
+  height: fit-content;
+}
+
+.more_btn a:hover,
+.more_dg_btn:hover,
+.front_post_box_link:hover {
+  opacity: 0.6;
+}
+
+.more_btn a img {
+  max-width: 207px;
+}
+
+.more_btn_ttl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: 16px;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.br_401,
+.br_550 {
+  display: none;
+}
+
+#diary,
+#introduction,
+#news,
+#store {
+  padding-top: 88px;
+}
+
+.diary_flex {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.diary_flex::after {
+  position: absolute;
+  bottom: -180px;
+  left: -90px;
+  width: 160px;
+  height: 170px;
+  content: "";
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/wagara.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.diary_ttl,
+.news_flex_box_ttl {
+  position: relative;
+  padding: 50px;
+}
+
+.diary_ttl::after,
+.news_flex_box_ttl::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 106px;
+  height: 123px;
+  content: "";
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/ttl_icon.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.diary_ttl h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 30px;
+  writing-mode: vertical-rl;
+}
+
+.more_dg_btn a img {
+  width: 134px;
+}
+
+.diary_item {
+  display: flex;
+  margin-left: 50px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.front_post_box {
+  width: 240px;
+  margin: 0 5px 20px;
+}
+
+.front_post_box_dateTime p {
+  font-size: 14px;
+}
+
+.front_post_content h5 {
+  font-size: 16px;
+}
+
+.introduction_flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.introduction_txt {
+  writing-mode: vertical-rl;
+}
+
+.introduction_txt_01 {
+  position: relative;
+  margin-left: 50px;
+  padding: 100px 50px 0;
+  font-size: 24px;
+}
+
+.introduction_txt_01::after {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 85px;
+  height: 96px;
+  content: "";
+  transform: translateX(-50%);
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/hu.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.introduction_txt_02 {
+  margin: 90px 0 50px;
+  line-height: 28px;
+}
+
+.introduction_imgarea_01 {
+  margin-bottom: 50px;
+}
+
+.introduction_imgarea_01 img {
+  width: 100%;
+  max-width: 377px;
+}
+
+.introduction_imgarea_02 {
+  margin-left: -100px;
+}
+
+.introduction_imgarea_02 video {
+  width: 100%;
+  max-width: 430px;
+}
+
+.news_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.news_flex_box {
+  width: 48%;
+}
+
+.news_flex_box_ttl {
+  padding: 55px 50px 45px;
+}
+
+.news_flex_box_ttl h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 30px;
+}
+
+.news_flex_box iframe {
+  width: 100%;
+  max-width: 340px;
+  height: 500px !important;
+}
+
+.more_dg_news {
+  margin-top: 50px;
+  text-align: right;
+}
+
+.front_news_box {
+  padding: 28px 0 28px 10px;
+  border-bottom: solid 1px #878787;
+}
+
+.front_news_box_link {
+  display: flex;
+}
+
+.front_news_box_dateTime {
+  margin-right: 50px;
+  font-size: 14px;
+}
+
+.front_news_content {
+  font-size: 16px;
+}
+
+.store_flex {
+  display: flex;
+  margin-left: 18%;
+  justify-content: flex-end;
+}
+
+.store_flex_txtarea {
+  margin: -50px 20px 0 0;
+}
+
+.store_flex_txt {
+  margin-top: 20px;
+}
+
+.store_flex_txt h3 {
+  font-size: 30px;
+}
+
+.store_flex_txt01 {
+  margin: 20px 0 40px;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.store_flex_txt02 {
+  font-size: 14px;
+}
+
+.store_flex_imgarea {
+  width: 70%;
+}
+
+.store_flex_img img {
+  width: 100%;
+}
+
+.store_iocon_flex,
+.footer_l_icon_flex {
+  display: flex;
+}
+
+.store_iocon_flex {
+  margin-top: 30px;
+}
+
+.store_iocon_flex li,
+.footer_l_icon_flex li {
+  margin-right: 18px;
+}
+
+.store_iocon_flex li a,
+.footer_l_icon_flex li a {
+  text-align: center;
+}
+
+.store_iocon_flex li a img,
+.footer_l_icon_flex li a img {
+  width: 33px;
+  margin: 0 auto;
+}
+
+.store_iocon_flex li a p,
+.footer_l_icon_flex li a p,
+.footer_l p {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer_slid {
+  display: flex;
+  width: 100vw;
+  height: 300px;
+  margin: 88px calc(50% - 50vw) 0;
+  overflow: hidden;
+}
+
+.footer_sliditem {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.footer_sliditem li {
+  width: 400px;
+  list-style: none;
+}
+
+.footer_sliditem li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer_sliditem:first-child {
+  animation: slide1 150s -75s linear infinite;
+}
+
+.footer_sliditem:last-child {
+  animation: slide2 150s linear infinite;
+}
+
+@keyframes slide1 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide2 {
+  0% {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+#site-footer {
+  padding: 56px 0 28px;
+  background: var(--footer);
+}
+
+#site-footer .section-inner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_logo a img {
+  width: 168px;
+}
+
+.footer_l {
+  margin: 12px 0;
+}
+
+.footer_l p {
+  color: var(--text);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.footer_l_icon_flex li a p {
+  white-space: nowrap;
+}
+
+.footer_nav {
+  width: 78%;
+}
+
+.footer_nav_flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.footer_nav_flex li {
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 1367px) {
+  .front_header_nav {
+    max-width: 840px;
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  .hello_txt_box {
+    margin-left: -30%;
+  }
+
+  .store_flex {
+    margin-left: 20px !important;
+  }
+
+  .hello_txtbox_flex_txtarea p {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hello_img_box img {
+    opacity: 0.6;
+    filter: brightness(1.2);
+  }
+}
+
+@media screen and (max-width: 1190px) {
+  .diary_flex::after {
+    left: -10px;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  .front_news_box_dateTime {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .front_news_box {
+    padding: 20px 0 10px;
+  }
+
+  .front_news_box_link {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 974px) {
+  .diary_item {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 865px) {
+  .hello_txt_box {
+    margin-left: -50%;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .introduction_flex {
+    display: block;
+  }
+
+  .introduction_txt {
+    margin: 0 auto;
+  }
+
+  .hu_more_860 {
+    width: 207px;
+    margin: 0 auto;
+  }
+
+  .introduction_imgarea {
+    position: relative;
+    z-index: -1;
+    display: flex;
+    margin-top: -20%;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .introduction_imgarea_01 {
+    margin: 0 10px 0;
+  }
+
+  .introduction_imgarea_02 {
+    margin: 40px 10px 0;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .store_flex {
+    display: block;
+    margin-left: 0 !important;
+    padding: 0 20px;
+  }
+
+  .br_840 {
+    display: none;
+  }
+
+  .store_flex_imgarea {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .store_flex_txt h3 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  #front_header {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .front_header_nav,
+  .front_header_icon_box {
+    display: none;
+  }
+
+  .front_header_flex {
+    display: block;
+  }
+
+  .front_header_logo {
+    width: 100%;
+  }
+
+  .front_header_logo a img {
+    margin: 0 auto;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .front_header_logo a img {
+    max-width: 80px;
+  }
+
+  .slideBox {
+    height: 200px !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .hello_txt_box {
+    margin-left: -70%;
+  }
+}
+
+@media screen and (max-width: 724px) {
+  .diary_flex {
+    display: block;
+  }
+
+  .front_post_box {
+    width: calc((100% - 20px) / 2);
+    max-width: 240px;
+  }
+
+  .diary_ttlarea {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .diary_ttl h2 {
+    writing-mode: horizontal-tb;
+  }
+
+  .diary_item {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .news_flex {
+    display: block;
+  }
+
+  .news_flex_box {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .hello_txtbox_flex_ttlarea_ttl img {
+    max-width: 90px;
+    margin: 0 auto;
+  }
+
+  .hello_txtbox_flex_txtarea p {
+    writing-mode: horizontal-tb;
+  }
+
+  .hello_txtbox_flex_ttlarea_ttl {
+    margin-bottom: 460px;
+  }
+
+  .hello_txtbox_flex_txtarea {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin: 0 20px;
+    transform: translate(-50%, -50%);
+  }
+
+  .hello_txt_box {
+    width: 100%;
+  }
+
+  .hello_flex {
+    position: relative;
+    flex-direction: column-reverse;
+  }
+
+  .btn_616 {
+    width: 207px;
+    margin: 0 auto;
+  }
+
+  .hello_img_box {
+    margin-top: -40%;
+  }
+
+  .hello_txtbox_flex {
+    position: relative;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .footer_flex {
+    display: block;
+  }
+
+  .footer_nav {
+    width: 100%;
+    margin: 50px 0;
+  }
+
+  .footer_nav_flex {
+    display: block;
+  }
+
+  .footer_nav_flex li {
+    position: relative;
+    border-bottom: solid #fff 1px;
+  }
+
+  .footer_nav_flex li::after {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    width: 8px;
+    height: 14px;
+    content: "";
+    background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/arrow.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .br_550 {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .introduction_txt {
+    writing-mode: horizontal-tb;
+  }
+
+  .introduction_txt_01 {
+    margin-left: 0;
+    padding: 60px 50px 0;
+    text-align: center;
+  }
+
+  .introduction_txt_01::after {
+    width: 53px;
+    height: 60px;
+  }
+
+  .introduction_txt_02 {
+    margin: 30px 0 50px;
+    font-size: 16px;
+  }
+
+  .diary_flex::after {
+    width: 120px;
+    height: 130px;
+  }
+
+  .br_515 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 496px) {
+  .br_496 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .diary_ttl h2,
+  .news_flex_box_ttl h2 {
+    font-size: 22px;
+  }
+
+  .diary_ttl,
+  .news_flex_box_ttl {
+    padding: 40px 0 40px 30px;
+  }
+
+  .diary_ttl::after,
+  .news_flex_box_ttl::after {
+    width: 76px;
+    height: 93px;
+  }
+}
+
+@media screen and (max-width: 401px) {
+  .br_401 {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 378px) {
+  .introduction_txt_01 {
+    font-size: 22px;
+  }
+
+  .introduction_imgarea {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .hello_txtbox_flex_txtarea {
+    margin: 0;
+  }
+}
+
+.page-main {
+  min-height: 100vh;
+}
+
+#site-content {
+  padding-bottom: 120px;
+}
+
+.page-article .entry-header {
+  position: relative;
+  width: 100%;
+  height: 166px;
+  margin-top: 34px;
+  padding: 0;
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/fixed_header-scaled.jpg");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.page-article .entry-header-inner.section-inner.medium {
+  position: relative;
+  max-width: 940px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.page-article .entry-header-inner.section-inner.medium::before {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 122px;
+  height: 122px;
+  content: "";
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.98) 0 58%, rgba(255, 255, 255, 0) 59%);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.12));
+}
+
+.page-article .post-inner.thin {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 58px 24px 0;
+}
+
+.page-article .entry-title {
+  position: absolute;
+  top: 16px;
+  left: 26px;
+  z-index: 2;
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  line-height: 1.08;
+  writing-mode: vertical-rl;
+}
+
+.page-article .entry-content h2,
+.page-article .entry-content h3,
+.page-article .entry-content p,
+.page-article .entry-content dt,
+.page-article .entry-content dd,
+.page-article .entry-content label,
+.page-article .entry-content input,
+.page-article .entry-content textarea,
+.page-article .entry-content button,
+.page-article .entry-content li {
+  font-family: "hiragino-mincho-pron", sans-serif !important;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.page-article .entry-content p,
+.page-article .entry-content li,
+.page-article .entry-content dd,
+.page-article .entry-content dt,
+.page-article .entry-content label {
+  font-size: 16px;
+}
+
+.fixed_w_1000 {
+  max-width: 940px !important;
+  margin: 0 auto;
+}
+
+.fixed_ttl {
+  position: relative;
+  padding: 20px 0 20px 50px;
+  border-bottom: #edafa8 solid;
+}
+
+.fixed_ttl::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  content: "";
+  transform: translateY(-50%);
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/fixed_ttl_icon-8.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.fixed_ttl h2 {
+  margin: 0 !important;
+}
+
+#commitment_01 {
+  max-width: 1040px;
+  padding: 0;
+}
+
+.commitment_01_content_1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0 80px;
+}
+
+.commitment_01_logo {
+  width: 40%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.commitment_01_content_1_txt {
+  width: 60%;
+}
+
+.commitment_01_content_1_txt p {
+  line-height: 30px;
+}
+
+.commitment_01_content_2 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 50px;
+}
+
+.commitment_01_content_2_txt,
+.commitment_01_content_2_img {
+  width: 50%;
+}
+
+.fixed_info {
+  max-width: 560px !important;
+  margin-top: 80px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 34px 38px;
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/info_bg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.fixed_info h2 {
+  margin: 0 !important;
+  padding-bottom: 18px;
+  font-size: 32px;
+}
+
+.fixed_info_tel_02 {
+  font-size: 30px !important;
+}
+
+.fixed_info_btn {
+  margin-top: 30px;
+}
+
+.fixed_info_btn button a {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #f2b4be;
+  color: #fff;
+  font-size: 14px;
+}
+
+.sweets_introduction {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sweets_introduction_img {
+  width: 100%;
+  max-width: 250px;
+}
+
+.sweets_introduction_txt {
+  width: 70%;
+  margin-left: 20px;
+}
+
+.sweets_introduction_txt p {
+  line-height: 30px;
+}
+
+.sweets_item_flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sweets_item_flex li {
+  max-width: 300px;
+  margin: 0 10px 30px;
+}
+
+.sweets_item_ttl {
+  margin-bottom: 20px;
+  padding: 50px 0 5px;
+  border-bottom: #edafa8 solid;
+}
+
+.sweets_item_ttl h3,
+.sweets_item_classic_item_ttl h3 {
+  margin: 0 !important;
+}
+
+.sweets_item_classic_item li {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+  border-bottom: solid #efd3d3 1px;
+}
+
+.sweets_item_classic_item_txtbox {
+  width: 70%;
+  margin-right: 20px;
+}
+
+.sweets_item_classic_item_ttl {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: #edafa8 solid 3px;
+}
+
+.sweets_item_classic_item_img {
+  width: 250px;
+}
+
+#question {
+  padding: 0 !important;
+}
+
+.question_item li {
+  padding: 28px 0 24px;
+  border-bottom: solid #edafa8 1px;
+}
+
+.question_item_a h3 span img,
+.question_item_q p span img {
+  width: 28px;
+}
+
+.question_item_q {
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+.question_item_a h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.question_item_q p {
+  display: flex;
+  gap: 8px;
+  color: #4a433d;
+  font-size: 14px !important;
+  line-height: 1.85;
+}
+
+#guidance {
+  margin-bottom: 60px;
+  padding: 0 !important;
+}
+
+.guidance_img {
+  width: 48%;
+  margin-top: 50px;
+}
+
+.guidance_img img {
+  width: 100%;
+}
+
+.guidance_flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.guidance_info_item {
+  width: 48%;
+}
+
+.guidance_info_item dl:nth-child(1) {
+  border-top: #edafa8 solid 1px;
+}
+
+.guidance_info_item dl {
+  display: flex;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: solid #edafa8 1px;
+}
+
+.guidance_info_item dl dt,
+.guidance_info_item dl dd {
+  font-family: "hiragino-mincho-pron", sans-serif !important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.guidance_info_item dl dt {
+  width: 200px;
+  text-align: center;
+}
+
+#guidance_access {
+  padding: 0 !important;
+}
+
+#guidance_access iframe {
+  margin-top: 20px;
+}
+
+.team-2-box {
+  padding: 12px 0 16px;
+  border-bottom: solid 1px #cd2653;
+}
+
+.team_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.team_flex_ttl {
+  width: calc(100% - 230px);
+}
+
+.team-2-pic {
+  width: 182px;
+  height: 122px;
+  overflow: hidden;
+}
+
+.team-2-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-2-content h5 {
+  margin: 10px 0 0;
+  font-family: "hiragino-mincho-pron", sans-serif !important;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.team-2-box_inner_flex {
+  display: flex;
+  width: 100% !important;
+  max-width: 900px !important;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.team-2-box_inner_01 {
+  width: 160px;
+}
+
+.team-2-box_inner_nav li {
+  margin-bottom: 12px;
+}
+
+.team-2-box_inner_nav li a {
+  position: relative;
+  padding-left: 20px;
+  color: #000;
+  font-family: "hiragino-mincho-pron", sans-serif !important;
+  font-size: 16px;
+}
+
+.team-2-box_inner_nav li a:hover {
+  color: #cb2f42;
+}
+
+.team-2-box_inner_nav span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: #cb2f42;
+}
+
+.team-2-box_inner_02 {
+  width: calc(100% - 210px);
+}
+
+.team-2-pic_dateTime p {
+  font-size: 16px !important;
+  line-height: 1.8;
+}
+
+#info_page {
+  padding: 0;
+}
+
+.info_page_01 {
+  margin-bottom: 20px;
+}
+
+.info_page_01_p {
+  line-height: 30px !important;
+}
+
+.info_page_tell_area {
+  position: relative;
+  margin: 0 0 20px 20px;
+  padding: 20px 0 20px 30px;
+}
+
+.info_page_tell_area::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  content: "";
+  transform: translateY(-50%);
+  background-image: url("https://kandawasai.com/wp-content/uploads/2023/09/311f47e9546a30acd9fc022ffc796d81.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.info_page_tell_area_p {
+  color: #cb2f42;
+  font-size: 30px !important;
+}
+
+.info_page_maill_p {
+  padding: 20px;
+}
+
+.info_page_mail {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info_page_mail label {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.info_page_mail label span {
+  color: #cb2f42;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea {
+  width: 100%;
+  margin-top: 8px;
+  background-color: #fff !important;
+  border: #333 solid 1px !important;
+}
+
+input {
+  padding: 0.6rem 1.8rem !important;
+}
+
+textarea {
+  min-height: 180px;
+  padding: 1rem 1.2rem;
+}
+
+input[type="submit"] {
+  width: auto;
+  border: 0 !important;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.pagination,
+.pnavi {
+  margin: 40px 0 0;
+}
+
+.pnavi .page-numbers {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #333;
+  font-family: "hiragino-mincho-pron", sans-serif !important;
+}
+
+.pnavi .current {
+  background: transparent;
+  color: #333;
+}
+
+.pnavi .prev,
+.pnavi .next,
+.pnavi .dots {
+  background: transparent;
+  box-shadow: none;
+  color: #333;
+}
+
+.post-101 .post-inner.thin,
+.post-107 .post-inner.thin,
+.post-109 .post-inner.thin,
+.post-179 .post-inner.thin {
+  max-width: 860px;
+}
+
+.post-101 .commitment_01_content_1 {
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.post-101 .commitment_01_logo {
+  width: 128px;
+  max-width: 128px;
+  margin-top: 62px;
+}
+
+.post-101 .commitment_01_content_1_txt {
+  width: calc(100% - 250px);
+}
+
+.post-101 .commitment_01_content_2 {
+  align-items: flex-start;
+  gap: 78px;
+  padding-top: 36px;
+}
+
+.post-101 .commitment_01_content_2_txt {
+  width: 44%;
+}
+
+.post-101 .commitment_01_content_2_img {
+  width: 56%;
+}
+
+.post-101 .commitment_01_content_2_img img {
+  width: 100%;
+  max-width: 354px;
+  margin-left: auto;
+}
+
+.post-101 .commitment_01_content_3 {
+  max-width: 760px;
+  padding-top: 50px;
+}
+
+.post-101 .entry-content h3,
+.post-103 .entry-content h3 {
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.post-101 .entry-content p {
+  line-height: 1.95;
+}
+
+.post-105 .post-inner.thin {
+  max-width: 920px;
+}
+
+.post-105 .entry-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.post-107 .entry-content,
+.post-109 .entry-content,
+.post-179 .entry-content {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.post-103 .post-inner.thin {
+  max-width: 980px;
+}
+
+.post-103 .entry-content {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+#site-footer {
+  padding: 70px 0 64px;
+}
+
+.footer_flex {
+  max-width: 940px;
+  align-items: flex-start;
+}
+
+.footer_nav {
+  flex: 1;
+  width: auto;
+}
+
+.footer_nav_flex {
+  gap: 0 6px;
+}
+
+@media screen and (max-width: 840px) {
+  .page-article .entry-header {
+    height: 126px;
+  }
+
+  .page-article .entry-header-inner.section-inner.medium {
+    max-width: calc(100% - 32px);
+  }
+
+  .page-article .entry-title {
+    top: 18px;
+    left: 18px;
+    font-size: 24px;
+  }
+
+  .page-article .entry-header-inner.section-inner.medium::before {
+    top: 8px;
+    left: -4px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .commitment_01_content_1,
+  .commitment_01_content_2,
+  .sweets_introduction,
+  .guidance_flex {
+    display: block;
+  }
+
+  .commitment_01_content_1_txt,
+  .commitment_01_content_2_txt,
+  .commitment_01_content_2_img,
+  .sweets_introduction_txt,
+  .guidance_info_item,
+  .guidance_img {
+    width: 100%;
+  }
+
+  .commitment_01_content_1_txt {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .commitment_01_content_2_txt,
+  .guidance_info_item,
+  .sweets_introduction_txt {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .post-101 .commitment_01_content_1_txt,
+  .post-101 .commitment_01_content_2_txt,
+  .post-101 .commitment_01_content_2_img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .team-2-box_inner_flex {
+    flex-direction: column-reverse;
+  }
+
+  .team-2-box_inner_01,
+  .team-2-box_inner_02 {
+    width: 100%;
+  }
+
+  .team-2-box_inner_01 {
+    margin-top: 50px;
+  }
+
+  .team-2-box_inner_02 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .sweets_item_classic_item li,
+  .team_flex {
+    display: block;
+  }
+
+  .sweets_item_classic_item_txtbox,
+  .team_flex_ttl,
+  .team-2-pic {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .sweets_item_classic_item_img {
+    margin: 20px auto 0;
+  }
+
+  .team-2-pic {
+    height: 190px;
+    margin-bottom: 16px;
+  }
+
+  .guidance_info_item dl dt {
+    width: 120px;
+    text-align: left !important;
+  }
+
+  .question_item_a h3 {
+    font-size: 16px;
+  }
+
+  .question_item_q p {
+    font-size: 13px !important;
+  }
+}
